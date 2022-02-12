@@ -2,6 +2,7 @@ import art from "../../assets/art.jpg";
 import IssueCards from "../../components/IssueCards/Issuecards";
 import { FaWineGlassAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/navbar/Navbar"
 
 function Homepage() {
   let arr = [
@@ -38,6 +39,7 @@ function Homepage() {
   ];
   return (
     <>
+    <Navbar />
       <div className="bg-[#E8E2E4] font-Montserrat w-full h-full">
         <div className="grid grid-cols-3">
           <div className="bg-[#E8E2E4] w-full h-screen flex justify-center flex-col items-center">
