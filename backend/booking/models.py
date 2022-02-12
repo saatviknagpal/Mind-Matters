@@ -1,4 +1,5 @@
 import email
+from email.policy import default
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
@@ -6,6 +7,9 @@ from django.contrib.auth.models import User
 class Professional(models.Model):
     name=models.CharField(max_length=60)
     degree=models.CharField(max_length=60)
+    experience=models.IntegerField()
+    field=models.CharField(max_length=100)
+    about=models.TextField(null=True)
     image_url=models.URLField(max_length=200,null=True)
     contact=PhoneNumberField(blank=True)
     email=models.EmailField(max_length=60)
@@ -27,5 +31,5 @@ class BookedSlot(models.Model):
     slot=models.ForeignKey(Slot,on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.user.name
+        return self.user.username
     

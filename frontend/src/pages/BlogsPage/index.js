@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BlogContainer from "./components/blogContainer";
 import NewsContainer from "./components/newsContainer";
+import Navbar from '../../components/navbar/Navbar'
 
 function BlogsPage() {
 	const [news, setNews] = useState([]);
@@ -21,26 +22,29 @@ function BlogsPage() {
 		await fetch("/blog/list/")
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
+				setBlogs(data);
 			})
 			.catch((err) => console.log(err));
 	}, []);
 
 	return (
+    <>
+    <Navbar />
 		<div className="blogsPage container max-w-7xl mx-auto flex justify-center items-center">
-			<div className="w-2/3 bg-red-50 space-y-5 h-screen p-5 overflow-y-scroll">
+			<div className="w-2/3 bg-orange-100 space-y-5 h-screen p-5 overflow-y-scroll">
 				<div className="text-3xl font-semibold pb-3">Blogs...</div>
-				<BlogContainer />
-				<BlogContainer />
-				<BlogContainer />
+				{blogs.map((data, id) => {
+					return <BlogContainer blogs={data} key={id} />;
+				})}
 			</div>
-			<div className="w-1/3 bg-orange-100 space-y-5 h-screen p-5 overflow-y-scroll">
+			<div className="w-1/3 bg-white space-y-5 h-screen p-5 overflow-y-scroll">
 				<div className="text-3xl text-black font-semibold pb-3">News...</div>
 				{news.map((data, id) => {
 					return <NewsContainer news={data} key={id} />;
 				})}
 			</div>
 		</div>
+    </>
 	);
 }
 

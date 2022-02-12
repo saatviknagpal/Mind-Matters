@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
 from .models import Blog
-from .serilaizers import BlogSerializer
+from .serializers import BlogSerializer
 # Create your views here.
 
 class BlogList(ListAPIView):
