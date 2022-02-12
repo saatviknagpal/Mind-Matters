@@ -1,18 +1,19 @@
 import React from 'react'
 
-function newsContainer() {
+const NewsContainer = ({news}) => {
+
     return (
         <div className='newsContainer flex flex-col gap-3 p-5 bg-white shadow-md rounded-md'>
-            <div className='newsTitle text-lg font-medium'>Cancer warning: White bread could boost your risk of cancer – expert - Verve times
+            <div className='newsTitle text-lg font-medium'>{news.title}
             </div>
-            <div className='newsAuthor text-md opacity-60'>Author: Rajib Mondal</div>
-            <div><img className='w-full rounded-lg' src='https://cdn.images.express.co.uk/img/dynamic/11/750x445/1564244.jpg' /></div>
+            <div className='newsAuthor text-md opacity-60'>Author: {news.author}</div>
+            <div><img className='w-full rounded-lg' src={news.urlToImage} /></div>
             <div>
-                Hussain Abdeh, superintendent pharmacist from Medicine Direct, named the everyday food which could cause bowel cancer. Bowel cancer is one of the most common types of cancer diagnosed in the UK. Depe… [+2799 chars]
+                {news.description}
             </div>
-            <a className='text-blue-600 underline' target='_blank' href='https://vervetimes.com/cancer-warning-white-bread-could-boost-your-risk-of-cancer-expert/'>Read More..</a>    
+            <a className='text-blue-600 underline' target='_blank' href={news.url}>Read More..</a>
         </div>
     )
 }
 
-export default newsContainer
+export default NewsContainer
