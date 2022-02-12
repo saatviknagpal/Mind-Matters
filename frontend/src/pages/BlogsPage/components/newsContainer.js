@@ -3,7 +3,7 @@ import React from 'react'
 const NewsContainer = ({news}) => {
 
     return (
-        <div className='newsContainer flex flex-col gap-3 p-5 bg-white shadow-md rounded-md'>
+        <div className='newsContainer flex flex-col gap-3 p-5 bg-orange-100 shadow-md rounded-md'>
             <div className='newsTitle text-lg font-medium'>{news.title}
             </div>
             <div className='newsAuthor text-md opacity-60'>Author: {news.author}</div>
