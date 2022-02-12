@@ -1,9 +1,7 @@
+import Navbar from "../../components/navbar/Navbar";
+
 function Homepage() {
-  return (
-    <>
-      <h1>Hellow world</h1>
-    </>
-  );
+  return <Navbar></Navbar>;
 }
 
 export default Homepage;
