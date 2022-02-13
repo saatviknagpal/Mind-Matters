@@ -1,41 +1,87 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Navbar from '../../components/navbar/Navbar'
+import Cookies from 'js-cookie'
+import { useParams} from 'react-router-dom'
 
-function index() {
+function Index() {
+
+    const { id } = useParams();
+    const [professional, setProfessional] = useState({});
+    const [slots, setSlots] = useState([]);
+    const [selectSlot, setSelectSlot] = useState(0);
+
+    useEffect(async () => {
+      await fetch(`/book-session/professionals/${id}`)
+      .then((res)=> res.json())
+      .then((data) => setProfessional(data))
+    }, [])
+    
+    useEffect(async () => {
+        await fetch(`/book-session/slots`)
+        .then((res)=> res.json())
+        .then((data) => setSlots(data))
+    }, [])
+    
+    const bookSlot = async ()=>{
+        await fetch('/book-session/book-slot/',{
+            method: 'POST',
+            body:{
+                slot_id: selectSlot,
+                professional_id: id,
+                access_token: Cookies.get('access_token'),
+            }
+        }) .then((res)=> {
+            console.log("slotID "+ selectSlot + ", professionalID "+ id + ", Access Token "+ Cookies.get('access_token'))
+        })
+    }
+    // console.log(id);
+    // console.log(selectSlot);
+
     return (
         <>
             <Navbar />
             <div className='container max-w-7xl mx-auto flex flex-col p-5'>
-                <div className='flex justify-start items-center p-10'>
-                    <img className='w-48 h-48 mr-20 border-white border-4 rounded-full' src='https://clinicalnotebook.com/wp-content/uploads/2015/04/Doctor-Profile-Pic-Example.png' />
+                <div className='flex justify-start items-center px-10 py-5'>
+                    <img className='w-48 h-48 mr-20 border-white border-4 rounded-full' src={professional.image_url} />
                     <div className='text-xl flex flex-col gap-2 '>
-                        <div>Name: Dr. Rajib Mondal</div>
-                        <div>Qualification: PhD Neurology</div>
-                        <div>Contact: +91 9958XXXXXX</div>
-                        <div>Email: mondalrajib1910@gmail.com</div>
+                        <div><span className='text-orange-600'>Name:</span> {professional.name}</div>
+                        <div><span className='text-orange-600'>Qualification:</span> {professional.degree}</div>
+                        <div><span className='text-orange-600'>Years of Experience:</span> {professional.experience}</div>
+                        <div><span className='text-orange-600'>Contact:</span> {professional.contact}</div>
+                        <div><span className='text-orange-600'>Email:</span> {professional.email}</div>
                     </div>
-                    <div className='ml-auto text-2xl bg-orange-200 p-5 rounded-2xl'>Session Fees: 800/hr</div>
+                    <div className='ml-auto text-2xl bg-orange-200 p-5 rounded-2xl'>Session Fees: {professional.session_fees} / hr</div>
                 </div>
+                <div className='text-lg'><span className='text-orange-600 text-xl'>About:</span> {professional.about}</div>
             </div>
-            <div className='p-10 bg-orange-100 w-screen'>
-                <div className='max-w-7xl mx-auto text-2xl pb-5'>Slots Available:</div>
-                <div className='max-w-7xl mx-auto text-xl flex items-center gap-10'>
-                    <div className='bg-green-300 text-black py-2 px-5 rounded-lg'>1pm - 2pm</div>
-                    <div>3pm - 4pm</div>
-                    <div className='bg-green-300 text-black py-2 px-5 rounded-lg'>6pm - 7pm</div>
+            <div className='px-10 bg-orange-100 w-screen'>
+                <div className='max-w-7xl mx-auto text-2xl py-5'>Slots Available:</div>
+                <div className='max-w-7xl mx-auto text-xl flex items-center flex-wrap gap-5'>
+
+                    {
+                        slots.map((slot, id) => {
+                            return <div className='bg-green-300 text-black py-2 px-5 rounded-lg'>{slot.start_time} - {slot.end_time}</div>
+                        })
+                    }
+                    
                 </div>
                 <div className='max-w-7xl mx-auto text-md pt-6 opacity-50'>*Select available slot and click on BOOK SLOT</div>
             </div>
-            <div className='max-w-7xl mx-auto gap-5 flex items-center text-xl pt-10 text-white'>
+            <div className='max-w-7xl mx-auto gap-5 flex items-center text-xl p-5 text-white'>
                 <label className='text-black' for="availability">Choose your slot:</label>
-                <select className='rounded-lg w-56 h-10 text-black p-1' required name="availability" id="availability">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
+                <select className='rounded-lg w-56 h-10 text-black p-1' required name="availability" id="availability" value={selectSlot} onChange={(e)=>setSelectSlot(e.target.value)}>
+
+                    {
+                        slots.map((slot, id) => {
+                            return <option value={id} >{slot.start_time} - {slot.end_time}</option>
+                        })
+                    }
+                    
                 </select>
-                <div className='w-max py-2 px-5 text-white bg-green-600 rounded-lg cursor-pointer'>Book Slot</div>
+                <div className='w-max py-2 px-5 text-white bg-green-600 rounded-lg cursor-pointer' onClick={bookSlot}>Book Slot</div>
             </div>
         </>
     )
 }
 
-export default index
+export default Index
