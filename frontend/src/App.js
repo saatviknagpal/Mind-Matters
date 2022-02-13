@@ -7,6 +7,7 @@ import Signin from "./pages/Signin/Signin";
 import BookAppointment from "./pages/BookAppointment/index";
 import Avatar from "./pages/Voicerooms/Avatar";
 import JokesPage from "./pages/JokesPage/index";
+import { VoiceRoom } from "./pages/VoiceRoom/VoiceRoom";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           element={<BookAppointment />}
         />
         <Route exact path="/voiceroom/avatar" element={<Avatar />} />
+        <Route exact path="/voiceroom" element={<VoiceRoom />} />
       </Routes>
     </BrowserRouter>
   );
