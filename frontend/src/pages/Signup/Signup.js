@@ -25,20 +25,20 @@ const Signup = () => {
     setValues({ ...values, error: false });
     await signup({ username, email, password, password2 }).then((data) => {
       console.log("here:" + data.email);
-      if (data.error) {
-        setValues({ ...values, error: data.error, success: false });
+      if (data.email) {
+        alert("Registration successful");
+        navigate("/signin");
       } else {
-        // console.log("working");
         setValues({
           ...values,
-          name: "",
+          username: "",
           email: "",
           password: "",
+          password2: "",
           error: "",
           success: true,
         });
-        alert("Registration successful");
-        navigate("/signin");
+        alert("User Already exist");
       }
     });
     // .catch(console.log("Error in signup"));

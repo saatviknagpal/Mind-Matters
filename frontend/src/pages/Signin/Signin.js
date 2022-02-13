@@ -31,13 +31,13 @@ const Signin = () => {
     setValues({ ...values, error: false, loading: true });
     await signin({ username, password }).then((data) => {
       console.log(data);
-      if (data.error) {
-        setValues({ ...values, error: data.error, lodaing: false });
-      } else {
+      if (data.access) {
         authenticate(data.access, () => {
           alert("Login Successful");
           navigate("/");
         });
+      } else {
+        alert("Invalid Credentials");
       }
     });
     // .catch(console.log("signin request failed"));
@@ -48,7 +48,7 @@ const Signin = () => {
   //     if (user) {
   //       return <Redirect to="/" />;
   //     }
-  //   }
+
   //   if (isAuthenticated()) {
   //     return <Redirect to="/" />;
   //   }
