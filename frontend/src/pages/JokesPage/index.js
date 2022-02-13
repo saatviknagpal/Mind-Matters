@@ -3,52 +3,36 @@ import Navbar from '../../components/navbar/Navbar'
 
 function Index() {
 
-    const [jokes, setJokes] = useState([]);
-    const [joke, setJoke] = useState("");
+    const [memes, setMemes] = useState([]);
 
     useEffect(async () => {
-        await fetch("https://v2.jokeapi.dev/joke/Any?type=single&amount=10", {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "jokeapi-v2.p.rapidapi.com",
-                "x-rapidapi-key": "8a5e65ef93msh9024850259194abp14860djsn8271bc22a1dc"
-            }
-        })
+        await fetch("https://www.reddit.com/r/memes.json")
             .then(res => res.json())
-            .then((data) => setJokes(data.jokes))
+            .then((body) => setMemes(body.data.children))
             .catch(err => {
                 console.error(err);
             });
-    }, [])
-
-    useEffect(async () => {
-        await fetch("https://api.chucknorris.io/jokes/random", {
-            "method": "GET"
-        })
-            .then(res => res.json())
-            .then((data) => setJoke(data.value))
-            .catch(err => {
-                console.error(err);
-            });
-    }, [])
-
+    }, []);
 
     return (
         <>
             <Navbar />
-            <div className=' py-10 px-20 flex flex-wrap justify-center gap-10 '>
-                <div className='p-10 text-xl mx-24 shadow-xl w-full bg-orange-100 flex justify-center items-center'>
-                    {joke}
-                </div>
+            <div className=' py-10 px-20  bg-cover ' style={{backgroundImage: 'url(https://images.unsplash.com/photo-1529641484336-ef35148bab06?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)'}}>
+                <div className='text-white text-4xl font-semibold text-center pb-8'>A good laugh heals a lot of hurts</div>
+                <div className='flex flex-wrap justify-center gap-10'>
                 {
-                    jokes.map((joke, index) => {
-                        return (
-                            <div className='p-5 shadow-xl w-2/5 bg-orange-100 flex justify-center items-center'>
-                                {joke.joke}
-                            </div>
-                        )
+                    memes.map((meme, index) => {
+                        if(meme.data.post_hint === "image" && index!=2 && index!=15){
+                            return (
+                                <div className=' flex justify-center items-center shadow-xl'>
+                                    <div></div>
+                                    <img className='w-96 h-96 flex items-center justify-center rounded-lg' src={meme.data.url_overridden_by_dest} />
+                                </div>
+                            )
+                        }  
                     })
                 }
+                </div>
             </div>
         </>
     )

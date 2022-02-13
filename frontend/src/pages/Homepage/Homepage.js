@@ -44,29 +44,21 @@ function Homepage() {
     <>
       <Navbar />
       <div className="bg-[#E8E2E4] font-Montserrat w-full h-full">
-        <div className="grid grid-cols-3">
-          <div className="bg-[#E8E2E4] w-full h-screen flex justify-center flex-col items-center">
-            <div>
-              <h1 className="font-extrabold text-6xl p-5 text-center">
-                Psych Health
-              </h1>
-              <p className="text-2xl font-semibold mb-5 italic px-14">
-                Curing mental health through psychological support.
-              </p>
-              <div className="ml-12">
-                <Link to="/appointment">
-                  <button className="text-white bg-cyan-500 text-xl px-10 py-4 font-semibold shadow-md rounded-md hover:shadow-xl active:scale-90 transition duration-150">
-                    Book an Appointment
-                  </button>
-                </Link>
-              </div>
+        <div className="relative">
+          <img src={art} className="h-screen w-screen" />
+          <div className="absolute top-0 bottom-0 left-0 w-1/2 flex flex-col gap-10 py-20 px-10">
+            <div className="text-3xl text-red-700 font-semibold">Mind Matters</div>
+            <div className="text-4xl font-semibold text-black tracking-wide leading-normal">Curing mental health through psychological support.</div>
+            <div className="flex flex-col text-2xl gap-4 font-medium">
+              <div className="flex items-center"><div className="w-4 h-4 mr-4 rounded-full bg-red-700"></div>Socialize with random people</div>
+              <div className="flex items-center"><div className="w-4 h-4 mr-4 rounded-full bg-red-700"></div>Read blogs about Good health</div>
+              <div className="flex items-center"><div className="w-4 h-4 mr-4 rounded-full bg-red-700"></div>Consult with professionals</div>
+              <div className="flex items-center"><div className="w-4 h-4 mr-4 rounded-full bg-red-700"></div>Chill out with interesting jokes</div>
             </div>
-          </div>
-          <div className="bg-cover w-full h-screen col-span-2">
-            <img src={art} alt="" className="w-screen h-screen" />
+            <Link className="text-white w-max py-3 px-5 text-xl tracking-wider bg-red-700 font-semibold hover:shadow-xl active:scale-90 transition duration-150 rounded-lg mt-5" to="/appointment">Book Appointment</Link>
           </div>
         </div>
-        <div className="my-20">
+        <div className="my-10 p-10">
           <h1 className="font-extrabold text-5xl p-5 text-center mb-10">
             Common Mental Health Issues
           </h1>
@@ -84,7 +76,7 @@ function Homepage() {
         <h1 className="font-extrabold text-6xl p-5 text-center">
           Featured Blogs
         </h1>
-        <div className="grid grid-cols-2 mt-10">
+        <div className="grid grid-cols-2 mt-10 pb-20">
           <div className="px-20">
             <p className="text-2xl text-black font-semibold mb-5">
               <p className="text-4xl font-extrabold mb-5 text-black">

@@ -1,11 +1,47 @@
+
+import { Link } from "react-router-dom";
+import avatar1 from "../../../assets/1.svg";
+import avatar2 from "../../../assets/2.svg";
+import avatar3 from "../../../assets/3.svg";
+import avatar4 from "../../../assets/4.svg";
+import avatar5 from "../../../assets/5.svg";
+import avatar6 from "../../../assets/6.svg";
+
+const avatars = [
+	{
+		name: "Gentleman",
+		avatar: avatar1
+	},
+	{
+		name: "warrior",
+		avatar: avatar2
+	},
+	{
+		name: "Black Widow",
+		avatar: avatar3
+	},
+	{
+		name: "Scarlett Witch",
+		avatar: avatar4
+	},
+	{
+		name: "Captian Marvel",
+		avatar: avatar5
+	},
+	{
+		name: "Mr. hulk",
+		avatar: avatar6
+	},
+];
+
 export default function chatroomSidebar({ avatarName, avatarUrl }) {
 	return (
 		<>
 			<div className="flex flex-no-wrap">
 				{/* Sidebar starts */}
 				{/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
-				<div className="w-64 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex">
-					<div className="px-8">
+				<div className="w-72 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex">
+					<div className="px-4">
 						{/* <div className="h-16 w-full flex items-center">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +55,19 @@ export default function chatroomSidebar({ avatarName, avatarUrl }) {
 						<h3 className="text-white mx-3 my-9 text-uppercase text-bold">
 							Participants
 						</h3>
-						<ul className="mt-12">
+						<div className="p-5">
+
+							{avatars.map((avatar, index) => {
+								return (
+									<div className="flex text-white py-2 gap-4 items-center">
+										<img className="w-10 h-10" src={avatar.avatar} />
+										<div className="text-lg">{avatar.name}</div>
+									</div>
+								);
+							})}
+
+						</div>
+						{/* <ul className="mt-12">
 							<li className="flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center mb-6">
 								<div className="flex items-center">
 									<svg
@@ -169,7 +217,8 @@ export default function chatroomSidebar({ avatarName, avatarUrl }) {
 									<span className="text-sm  ml-2">Settings</span>
 								</div>
 							</li>
-						</ul>
+						</ul> */}
+						<Link className="text-white text-lg flex justify-center items-center rounded-lg bg-red-500 tracking-wider p-2" to="/">Leave Room</Link>
 						<div className="flex justify-center mt-48 mb-4 w-full">
 							<div className="relative ">
 								<div className="text-gray-500 absolute ml-4 inset-0 m-auto w-4 h-4"></div>

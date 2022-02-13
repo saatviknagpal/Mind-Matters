@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   signin,
   authenticate,
 } from "../../components/navbar/authHelper/Helper";
+import Navbar from "../../components/navbar/Navbar";
 
 const Signin = () => {
   const [values, setValues] = useState({
@@ -42,47 +43,49 @@ const Signin = () => {
 
   const signInForm = () => {
     return (
-      <div class="bg-grey-lighter min-h-screen flex flex-col">
-        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-          <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-            <h1 class="mb-8 text-3xl text-center">Sign In</h1>
-            <input
-              class="block border border-grey-light w-full p-3 rounded mb-4"
-              name="username"
-              onChange={handleChange("username")}
-              type="text"
-              placeholder="Username"
-              value={username}
-            />
-            <input
-              type="password"
-              class="block border border-grey-light w-full p-3 rounded mb-4"
-              name="password"
-              placeholder="Password"
-              onChange={handleChange("password")}
-              value={password}
-            />
+      <>
+        <Navbar />
+        <div class="bg-grey-lighter min-h-screen flex flex-col">
+          <div class="container max-w-sm mx-auto pt-40 flex flex-col items-center justify-center px-2">
+            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+              <h1 class="mb-8 text-3xl text-center">Sign In</h1>
+              <input
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="username"
+                onChange={handleChange("username")}
+                type="text"
+                placeholder="Username"
+                value={username}
+              />
+              <input
+                type="password"
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="password"
+                placeholder="Password"
+                onChange={handleChange("password")}
+                value={password}
+              />
 
-            <button
-              onClick={onSubmit}
-              type="submit"
-              class="w-full text-center bg-cyan-500 py-3 rounded   text-white hover:bg-green-dark focus:outline-none my-1"
-            >
-              SignIn
-            </button>
-          </div>
-          <div class="text-grey-dark mt-6">
-            Dont have an account?{" "}
-            <a
-              class="no-underline border-b border-blue text-blue"
-              href="/signup"
-            >
-              SignUp
-            </a>
-            .
+              <button
+                onClick={onSubmit}
+                type="submit"
+                class="w-full text-center bg-cyan-500 py-3 rounded   text-white hover:bg-green-dark focus:outline-none my-1"
+              >
+                SignIn
+              </button>
+            </div>
+            <div class="text-grey-dark mt-6">
+              Dont have an account?{" "}
+              <Link to="/signup"
+                class="no-underline border-b border-blue text-blue"
+              >
+                SignUp
+              </Link>
+              .
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   };
 

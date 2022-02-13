@@ -30,7 +30,7 @@ const Navbar = () => {
     }
   }, [showLinks]);
   return (
-    <nav class="border-4 border-rose-100 border-y-rose-100">
+    <nav class="shadow-xl">
       <div className="nav-center">
         <div className="nav-header">
           <img
@@ -71,12 +71,12 @@ const Navbar = () => {
             <Fragment>
               <li className="mx-2">
                 <Link to="/signup">
-                  <FiUserPlus />
+                  <FiUserPlus size={32} />
                 </Link>
               </li>
               <li className="mx-2">
                 <Link to="/signin">
-                  <FaSignInAlt />
+                  <FaSignInAlt size={32} />
                 </Link>
               </li>
             </Fragment>
@@ -91,7 +91,7 @@ const Navbar = () => {
                     signout();
                   }}
                 >
-                  <FaSignOutAlt />
+                  <FaSignOutAlt size={32} />
                 </Link>
               </li>
             </Fragment>

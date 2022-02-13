@@ -28,23 +28,23 @@ function BlogsPage() {
 	}, []);
 
 	return (
-    <>
-    <Navbar />
-		<div className="blogsPage container max-w-7xl mx-auto flex justify-center items-center">
-			<div className="w-2/3 bg-orange-100 space-y-5 h-screen p-5 overflow-y-scroll">
-				<div className="text-3xl font-semibold pb-3">Blogs...</div>
-				{blogs.map((data, id) => {
-					return <BlogContainer blogs={data} key={id} />;
-				})}
+		<>
+			<Navbar />
+			<div className="blogsPage py-5 px-20 flex justify-center items-center bg-contain" style={{backgroundImage: 'url(https://images.unsplash.com/photo-1515261439133-0f6cfb098e04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)'}}>
+				<div className="w-2/3 bg-transparent space-y-5 h-screen p-5 overflow-y-scroll">
+					<div className="text-3xl text-white font-semibold pb-3">Blogs...</div>
+					{blogs.map((data, id) => {
+						return <BlogContainer blogs={data} key={id} />;
+					})}
+				</div>
+				<div className="w-1/3 bg-transparent space-y-5 h-screen p-5 overflow-y-scroll">
+					<div className="text-3xl text-white font-semibold pb-3">News...</div>
+					{news.map((data, id) => {
+						return <NewsContainer news={data} key={id} />;
+					})}
+				</div>
 			</div>
-			<div className="w-1/3 bg-white space-y-5 h-screen p-5 overflow-y-scroll">
-				<div className="text-3xl text-black font-semibold pb-3">News...</div>
-				{news.map((data, id) => {
-					return <NewsContainer news={data} key={id} />;
-				})}
-			</div>
-		</div>
-    </>
+		</>
 	);
 }
 

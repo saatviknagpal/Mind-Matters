@@ -10,7 +10,7 @@ export const links = [
   {
     id: 2,
     url: "/voiceroom",
-    text: "voiceroom",
+    text: "VoiceRoom",
   },
   {
     id: 3,
@@ -20,7 +20,7 @@ export const links = [
   {
     id: 4,
     url: "/jokes",
-    text: "jokes",
+    text: "Memes",
   },
   {
     id: 5,

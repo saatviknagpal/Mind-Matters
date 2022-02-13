@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../../components/navbar/authHelper/Helper";
+import Navbar from "../../components/navbar/Navbar";
 
 const Signup = () => {
   const [values, setValues] = useState({
@@ -44,83 +45,85 @@ const Signup = () => {
 
   const signUpForm = () => {
     return (
-      <div class="bg-grey-lighter min-h-screen flex flex-col">
-        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-          <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-            <h1 class="mb-8 text-3xl text-center">Sign up</h1>
-            <input
-              class="block border border-grey-light w-full p-3 rounded mb-4"
-              name="username"
-              onChange={handleChange("username")}
-              type="text"
-              placeholder="Username"
-              value={username}
-            />
+      <>
+        <Navbar />
+        <div class="bg-grey-lighter min-h-screen flex flex-col">
+          <div class="container max-w-sm mx-auto pt-16 flex flex-col items-center justify-center px-2">
+            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+              <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+              <input
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="username"
+                onChange={handleChange("username")}
+                type="text"
+                placeholder="Username"
+                value={username}
+              />
 
-            <input
-              class="block border border-grey-light w-full p-3 rounded mb-4"
-              name="email"
-              onChange={handleChange("email")}
-              type="email"
-              placeholder="Email"
-              value={email}
-            />
+              <input
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="email"
+                onChange={handleChange("email")}
+                type="email"
+                placeholder="Email"
+                value={email}
+              />
 
-            <input
-              type="password"
-              class="block border border-grey-light w-full p-3 rounded mb-4"
-              name="password"
-              placeholder="Password"
-              onChange={handleChange("password")}
-              value={password}
-            />
-            <input
-              type="password"
-              class="block border border-grey-light w-full p-3 rounded mb-4"
-              name="confirm_password"
-              placeholder="Confirm Password"
-              onChange={handleChange("password2")}
-              value={password2}
-            />
+              <input
+                type="password"
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="password"
+                placeholder="Password"
+                onChange={handleChange("password")}
+                value={password}
+              />
+              <input
+                type="password"
+                class="block border border-grey-light w-full p-3 rounded mb-4"
+                name="confirm_password"
+                placeholder="Confirm Password"
+                onChange={handleChange("password2")}
+                value={password2}
+              />
 
-            <button
-              onClick={onSubmit}
-              type="submit"
-              class="w-full text-center bg-cyan-500 py-3 rounded   text-white hover:bg-green-dark focus:outline-none my-1"
-            >
-              Create Account
-            </button>
-
-            <div class="text-center text-sm text-grey-dark mt-4">
-              By signing up, you agree to the{" "}
-              <a
-                class="no-underline border-b border-grey-dark text-grey-dark"
-                href="#"
+              <button
+                onClick={onSubmit}
+                type="submit"
+                class="w-full text-center bg-cyan-500 py-3 rounded   text-white hover:bg-green-dark focus:outline-none my-1"
               >
-                Terms of Service
-              </a>{" "}
-              and{" "}
-              <a
-                class="no-underline border-b border-grey-dark text-grey-dark"
-                href="#"
+                Create Account
+              </button>
+
+              <div class="text-center text-sm text-grey-dark mt-4">
+                By signing up, you agree to the{" "}
+                <a
+                  class="no-underline border-b border-grey-dark text-grey-dark"
+                  href="#"
+                >
+                  Terms of Service
+                </a>{" "}
+                and{" "}
+                <a
+                  class="no-underline border-b border-grey-dark text-grey-dark"
+                  href="#"
+                >
+                  Privacy Policy
+                </a>
+              </div>
+            </div>
+
+            <div class="text-grey-dark mt-6">
+              Already have an account?{" "}
+              <Link to="/signin"
+                class="no-underline border-b border-blue text-blue"
               >
-                Privacy Policy
-              </a>
+                SignIn
+              </Link>
+              .
             </div>
           </div>
-
-          <div class="text-grey-dark mt-6">
-            Already have an account?{" "}
-            <a
-              class="no-underline border-b border-blue text-blue"
-              href="/signin"
-            >
-              SignIn
-            </a>
-            .
-          </div>
         </div>
-      </div>
+      </>
     );
   };
 
