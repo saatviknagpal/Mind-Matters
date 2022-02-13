@@ -164,6 +164,7 @@ nav {
 .logo {
   height: 40px;
   padding: auto;
+  cursor: pointer;
 }
 .links a {
   color: var(--clr-grey-3);
