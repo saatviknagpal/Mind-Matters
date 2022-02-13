@@ -3,6 +3,8 @@ import Homepage from "./pages/Homepage/Homepage";
 import BlogsPage from "./pages/BlogsPage";
 import ProfessionalList from "./pages/ProfessionalsPage/ProfessionalList";
 import BookAppointment from "./pages/BookAppointment";
+import Signup from "./pages/Signup/Signup";
+import Signin from "./pages/Signin/Signin";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route exact path="/blogs" element={<BlogsPage />} />
         <Route exact path="/appointment" element={<ProfessionalList />} />
         <Route exact path="/bookAppointment" element={<BookAppointment />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/signin" element={<Signin />} />
       </Routes>
     </BrowserRouter>
   );
