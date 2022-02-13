@@ -7,13 +7,13 @@
 Due to COVID-19 outbreak everything became digitalized, so people forgot how to socialise with their fellow beings and friends, so this leads to depression, anxiety and other mental health issues. So our website helps them to socialise digitally and open up their feelings in front of random strangers and professional psychologists anonymously.
 
 ## Idea  
-Our website provides a platform to the people who are facing mental issues so that they can express their feelings in front of strangers without the fear of being judged and they can also consult a professional psychologist. Generally, when people are bored they start overthinking
+Our website provides a platform to the people who are facing mental issues so that they can express their feelings in front of strangers without the fear of being judged and they can also consult a professional psychologist. Generally, when people are bored they start overthinking and they get depressed, so our platform provides blogs, news, memes in the attempt of curing their boredom.
 
 ## Features
-Will have information related to   
-     1. 
-     2. Hackathons   
-     3. Internships opportunities  
+Our Platform has following features 
+     1. Consulting with professional psychologists
+     2. Voice Chat with random strangers  
+     3. Sh  
      4. Coding events  
      5. Student Community Programmes  
 
