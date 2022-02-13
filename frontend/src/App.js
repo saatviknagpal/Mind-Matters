@@ -5,6 +5,7 @@ import ProfessionalList from "./pages/ProfessionalsPage/ProfessionalList";
 import Signup from "./pages/Signup/Signup";
 import Signin from "./pages/Signin/Signin";
 import BookAppointment from "./pages/BookAppointment/index";
+import Voiceroom from "./pages/Voicerooms/Voiceroom";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           path="/bookAppointment/:id"
           element={<BookAppointment />}
         />
+        <Route exact path="/voiceroom" element={<Voiceroom />} />
       </Routes>
     </BrowserRouter>
   );
