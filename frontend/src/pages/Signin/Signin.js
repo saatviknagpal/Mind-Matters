@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo1 from "../../components/navbar/utilities/logo1.svg";
-import logo2 from "../../components/navbar/utilities/logo2.svg";
 
 import {
   signin,
   authenticate,
-  isAuthenticated,
 } from "../../components/navbar/authHelper/Helper";
 
 const Signin = () => {
@@ -42,17 +39,6 @@ const Signin = () => {
     });
     // .catch(console.log("signin request failed"));
   };
-
-  // const performRedirect = () => {
-  //   if (didRedirect) {
-  //     if (user) {
-  //       return <Redirect to="/" />;
-  //     }
-
-  //   if (isAuthenticated()) {
-  //     return <Redirect to="/" />;
-  //   }
-  // };
 
   const signInForm = () => {
     return (
@@ -100,12 +86,7 @@ const Signin = () => {
     );
   };
 
-  return (
-    <div>
-      {signInForm()}
-      {/* {performRedirect()} */}
-    </div>
-  );
+  return <div>{signInForm()}</div>;
 };
 
 export default Signin;

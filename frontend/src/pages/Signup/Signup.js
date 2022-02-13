@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signup } from "../../components/navbar/authHelper/Helper";
 
-import Navbar from "../../components/navbar/Navbar";
-
 const Signup = () => {
   const [values, setValues] = useState({
     username: "",
@@ -125,37 +123,6 @@ const Signup = () => {
       </div>
     );
   };
-
-  //   const successMessage = () => {
-  //     return (
-  //       <div className="row">
-  //         <div className="col-md-6 offset-sm-3 text-left">
-  //           <div
-  //             className="alert alert-success"
-  //             style={{ display: success ? "" : "none" }}
-  //           >
-  //             New account created successfully.
-  //             <Link to="/signin">Login Here</Link>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     );
-  //   };
-
-  //   const errorMessage = () => {
-  //     return (
-  //       <div className="row">
-  //         <div className="col-md-6 offset-sm-3 text-left">
-  //           <div
-  //             className="alert alert-danger"
-  //             style={{ display: error ? "" : "none" }}
-  //           >
-  //             {error}
-  //           </div>
-  //         </div>
-  //       </div>
-  //     );
-  //   };
 
   return signUpForm();
 };
