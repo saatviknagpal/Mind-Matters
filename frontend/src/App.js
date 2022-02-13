@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage/Homepage";
 import BlogsPage from "./pages/BlogsPage";
 import ProfessionalList from "./pages/ProfessionalsPage/ProfessionalList";
-import BookAppointment from "./pages/BookAppointment/Index";
+import BookAppointment from "./pages/BookAppointment/index";
 
 function App() {
   return (

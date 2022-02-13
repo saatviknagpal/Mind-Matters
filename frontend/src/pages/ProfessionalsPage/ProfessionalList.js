@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import ListContainer from "./components/listContainer";
 
@@ -6,14 +7,13 @@ function ProfessionalList() {
   const [data, setData] = useState([]);
 
   useEffect(async () => {
-    await fetch("/book-sessions/professionals/")
+    await fetch("/book-session/professionals/")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
       })
       .catch((err) => console.log(err));
   }, []);
-
   return (
     <>
       <Navbar />
@@ -25,10 +25,16 @@ function ProfessionalList() {
             </h1>
           </div>
         </div>
+        <div className="flex justify-center items-center flex-wrap">
+          {data.map((data, id) => {
+            return (
+              <Link to={`/bookAppointment/${id+1}`}>
+                <ListContainer list={data} key={id} />
+              </Link>
+            );
+          })}
+        </div>
       </div>
-      {data.map((data, id) => {
-        return <ListContainer list={data} key={id} />;
-      })}
     </>
   );
 }
