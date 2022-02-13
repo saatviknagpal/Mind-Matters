@@ -47,7 +47,7 @@ function Homepage() {
         <div className="relative">
           <img src={art} className="h-screen w-screen" />
           <div className="absolute top-0 bottom-0 left-0 w-1/2 flex flex-col gap-10 py-20 px-10">
-            <div className="text-3xl text-red-6700 font-semibold">Psych Health</div>
+            <div className="text-3xl text-red-700 font-semibold">Mind Matters</div>
             <div className="text-4xl font-semibold text-black tracking-wide leading-normal">Curing mental health through psychological support.</div>
             <div className="flex flex-col text-2xl gap-4 font-medium">
               <div className="flex items-center"><div className="w-4 h-4 mr-4 rounded-full bg-red-700"></div>Socialize with random people</div>
@@ -76,7 +76,7 @@ function Homepage() {
         <h1 className="font-extrabold text-6xl p-5 text-center">
           Featured Blogs
         </h1>
-        <div className="grid grid-cols-2 mt-10">
+        <div className="grid grid-cols-2 mt-10 pb-20">
           <div className="px-20">
             <p className="text-2xl text-black font-semibold mb-5">
               <p className="text-4xl font-extrabold mb-5 text-black">
