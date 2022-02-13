@@ -9,6 +9,8 @@ function Index() {
 	const [slots, setSlots] = useState([]);
 	const [selectSlot, setSelectSlot] = useState(0);
 
+	const [showSuccess, setShowSuccess] = useState(false);
+
 	useEffect(async () => {
 		await fetch(`/book-session/professionals/${id}`)
 			.then((res) => res.json())
@@ -24,6 +26,7 @@ function Index() {
 	const bookSlot = async () => {
 		let token = JSON.parse(localStorage.jwt);
 		console.log(token);
+		setShowSuccess(true);
 		await fetch("/book-session/book-slot/", {
 			method: "POST",
 			headers: {
@@ -43,7 +46,7 @@ function Index() {
 	return (
 		<>
 			<Navbar />
-			<div className="container max-w-7xl mx-auto flex flex-col p-5">
+			<div className="container max-w-7xl mx-auto flex flex-col p-5 relative">
 				<div className="flex justify-start items-center px-10 py-5">
 					<img
 						className="w-48 h-48 mr-20 border-white border-4 rounded-full"
@@ -120,6 +123,10 @@ function Index() {
 				>
 					Book Slot
 				</div>
+
+			</div>
+			<div className={(showSuccess ? " visible ": " hidden ") + " bg-green-500 text-white w-1/2 px-28 text-center py-16 text-2xl rounded-xl absolute top-96 left-96"}>
+				Your Slot has been Successfully booked.
 			</div>
 		</>
 	);
