@@ -5,7 +5,7 @@ import ProfessionalList from "./pages/ProfessionalsPage/ProfessionalList";
 import Signup from "./pages/Signup/Signup";
 import Signin from "./pages/Signin/Signin";
 import BookAppointment from "./pages/BookAppointment/index";
-
+import Selection from "./pages/VoiceRoom/Selection";
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +15,7 @@ function App() {
         <Route exact path="/appointment" element={<ProfessionalList />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/signin" element={<Signin />} />
+        <Route exact path="/voiceroom" element={<Selection />} />
         <Route
           exact
           path="/bookAppointment/:id"

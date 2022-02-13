@@ -2,15 +2,13 @@ import React, { useState, useRef, useEffect, Fragment } from "react";
 import { FaBars } from "react-icons/fa";
 import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { FiUserPlus } from "react-icons/fi";
-import { links, auth } from "./utilities/data";
+import { links } from "./utilities/data";
 import logo1 from "./utilities/logo1.svg";
 import logo2 from "./utilities/logo2.svg";
 import "./app.css";
 import { useNavigate } from "react-router-dom";
 import {
-  signin,
   signout,
-  authenticate,
   isAuthenticated,
 } from "../../components/navbar/authHelper/Helper";
 import { Link } from "react-router-dom";
@@ -32,7 +30,7 @@ const Navbar = () => {
     }
   }, [showLinks]);
   return (
-    <nav>
+    <nav class="border-4 border-rose-100 border-y-rose-100">
       <div className="nav-center">
         <div className="nav-header">
           <img
@@ -68,17 +66,6 @@ const Navbar = () => {
             })}
           </ul>
         </div>
-        {/* <ul className="social-icons">
-          {auth.map((authicon) => {
-            const { id, url, icon } = authicon;
-            return (
-              <li key={id} className="mx-2">
-                <a href={url}>{icon}</a>
-              </li>
-            );
-          })}
-        </ul> */}
-
         <ul className="social-icons">
           {!isAuthenticated() && (
             <Fragment>
