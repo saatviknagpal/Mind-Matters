@@ -27,11 +27,6 @@ export const links = [
     url: "/appointment",
     text: "appointment",
   },
-  {
-    id: 6,
-    url: "/about",
-    text: "about",
-  },
 ];
 
 export const auth = [
