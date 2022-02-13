@@ -1,1 +1,1 @@
-# PsychHack
+# Mind Matters
