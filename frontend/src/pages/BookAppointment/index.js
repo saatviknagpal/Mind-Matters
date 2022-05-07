@@ -12,13 +12,13 @@ function Index() {
 	const [showSuccess, setShowSuccess] = useState(false);
 
 	useEffect(async () => {
-		await fetch(`/book-session/professionals/${id}`)
+		await fetch(`${process.env.REACT_APP_BACKEND_URL}/book-session/professionals/${id}`)
 			.then((res) => res.json())
 			.then((data) => setProfessional(data));
 	}, []);
 
 	useEffect(async () => {
-		await fetch(`/book-session/slots`)
+		await fetch(`${process.env.REACT_APP_BACKEND_URL}/book-session/slots`)
 			.then((res) => res.json())
 			.then((data) => setSlots(data));
 	}, []);
@@ -27,7 +27,7 @@ function Index() {
 		let token = JSON.parse(localStorage.jwt);
 		console.log(token);
 		setShowSuccess(true);
-		await fetch("/book-session/book-slot/", {
+		await fetch(`${process.env.REACT_APP_BACKEND_URL}/book-session/book-slot/`, {
 			method: "POST",
 			headers: {
 				Authorization: `Bearer ${token}`,

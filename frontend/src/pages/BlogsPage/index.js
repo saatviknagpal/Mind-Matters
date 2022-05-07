@@ -19,7 +19,7 @@ function BlogsPage() {
 	}, []);
 
 	useEffect(async () => {
-		await fetch("/blog/list/")
+		await fetch(`${process.env.REACT_APP_BACKEND_URL}/blog/list/`)
 			.then((res) => res.json())
 			.then((data) => {
 				setBlogs(data);

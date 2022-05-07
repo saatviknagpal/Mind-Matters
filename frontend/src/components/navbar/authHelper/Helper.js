@@ -1,5 +1,5 @@
 export const signup = async (user) => {
-  return await fetch(`/accounts/register/`, {
+  return await fetch(`${process.env.REACT_APP_BACKEND_URL}/accounts/register/`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -14,7 +14,7 @@ export const signup = async (user) => {
 };
 
 export const signin = (user) => {
-  return fetch(`/accounts/api/token/`, {
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/accounts/api/token/`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -40,7 +40,7 @@ export const signout = (next) => {
   if (typeof window !== "undefined") {
     localStorage.removeItem("jwt");
     next();
-    return fetch(`/signout`, {
+    return fetch(`${process.env.REACT_APP_BACKEND_URL}/signout`, {
       method: "GET",
     })
       .then((response) => console.log("signout success"))

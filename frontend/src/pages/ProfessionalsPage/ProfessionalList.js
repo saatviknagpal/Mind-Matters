@@ -7,7 +7,7 @@ function ProfessionalList() {
   const [data, setData] = useState([]);
 
   useEffect(async () => {
-    await fetch("/book-session/professionals/")
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/book-session/professionals/`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
