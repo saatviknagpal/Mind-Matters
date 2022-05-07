@@ -14,6 +14,8 @@ from pathlib import Path
 from datetime import timedelta
 import os
 import decouple
+import dj_database_url
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,12 +89,17 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES={
+        'default':dj_database_url.config(default=decouple.config('DATABASE_URL'))
+    }
 
 
 # Password validation
@@ -156,3 +163,5 @@ SIMPLE_JWT = {
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
 ]
+
+django_heroku.settings(locals())
