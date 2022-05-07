@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8000",
+  "proxy": "https://code-peer.vercel.app/",
   "dependencies": {
     "@dicebear/avatars": "^4.10.2",
     "@dicebear/micah": "^4.10.2",
